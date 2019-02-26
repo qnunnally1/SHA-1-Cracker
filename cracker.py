@@ -56,7 +56,7 @@ def printResult(match, found=True):
     if found:
         print('The cracked hash is: ' + match[0] +'. This took ' + str(match[1]) + ' guesses.')
     else:
-        print('No results found for your hash: ' + match + '.')
+        print('No results found for your hash.')
 
 # get hash input from command line and convert to lower-case for future comparison
 sha1_hash = sys.argv[1]
@@ -67,21 +67,20 @@ word_match = crack(sha1_hash)
 
 if len(word_match[0]) > 0:
     printResult(word_match)
-elif len(word_match) < 1:
+else:
     # use salt to crack hash
     salt_word = crack(salt)
     salt_hash = crack(sha1_hash, salt_word[0])
 
     if len(salt_hash[0]) > 0:
         printResult(salt_hash)
-else:
-    # populate dictionary with similar hashes
-    graduate_dict = filter_hashes(sha1_hash[0])
-    # crack  hash
-    graduate_hash = crack(sha1_hash, salt=' ', separate=True)
-
-    if len(graduate_hash[0]) > 0:
-        printResult(graduate_hash)
     else:
-        printResult(graduate_hash, False)
-    
+        # populate dictionary with similar hashes
+        graduate_dict = filter_hashes(sha1_hash[0])
+        # crack hash
+        graduate_hash = crack(sha1_hash, salt=' ', separate=True)
+
+        if len(graduate_hash[0]) > 0:
+            printResult(graduate_hash)
+        else:
+            printResult(sha1_hash, False)
