@@ -1,6 +1,7 @@
 # SHA-1-Cracker
 ### Quantonio Nunnally
 
+
 ## Installation
 To use the SHA-1 Cracker, first download this repository by clicking 'Download' or clone this repository to a directory of your choosing in your local environment. Remember this location, as you will have to navigate here to further run the program.
 
