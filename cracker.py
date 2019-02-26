@@ -1,4 +1,3 @@
-'''SHA-1 Cracker takes a user's hash and attemps to solve for it's plaintext value using a dictionary of over 46,000 words'''
 import hashlib, sys
 
 # string to hold word with potential matched hash
